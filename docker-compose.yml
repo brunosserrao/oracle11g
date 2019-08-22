@@ -1,11 +1,10 @@
 db:
-  image: oracle/database:11.2.0.2-xe
+  image: webdizz/oracle-xe-11g-sa:latest
   ports:
-    - 1521:1521
-    - 8085:8080
-  shm_size: 1g
-  volumes:
-    - ./data:/u01/app/oracle/oradata
+    - "15080:8080"
+    - "1521:1521"
   environment:
-    - ORACLE_PWD=<password>
-  restart: unless-stopped
+    - processes=200
+    - DATABASES=sample
+  volumes:
+     - ./data:/u01/app/oracle
